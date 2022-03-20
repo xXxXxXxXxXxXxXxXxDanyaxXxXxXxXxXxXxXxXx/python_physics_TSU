@@ -7,4 +7,5 @@ with open("input.txt") as f:
 		bow = l*w*h
 		ribbon_summ += (rib + bow)
 
-print(ribbon_summ)
+with open("output2.txt", "w") as f:
+    print(ribbon_summ, file=f)

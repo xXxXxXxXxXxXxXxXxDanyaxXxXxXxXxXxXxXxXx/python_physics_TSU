@@ -9,4 +9,5 @@ for i in st:
     else:
         floor -= 1
 
-print(floor)
+with open("output1.txt", "w") as f:
+    print(floor, file=f)

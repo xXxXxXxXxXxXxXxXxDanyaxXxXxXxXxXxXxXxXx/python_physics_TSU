@@ -9,4 +9,5 @@ with open("input.txt") as f:
 		paper_summ += summ
 		
 
-print(paper_summ)
+with open("output1.txt", "w") as f:
+    print(paper_summ, file=f)

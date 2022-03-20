@@ -10,7 +10,8 @@ for i in range(len(st)):
 		else:
 			floor -= 1
 	else:
-		print(i)
+		floor = i
 		break
 		
-print(floor)
+with open("output2.txt", "w") as f:
+    print(floor, file=f)
