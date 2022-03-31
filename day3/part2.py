@@ -24,8 +24,6 @@ for item in lines:
         if [santa_x, santa_y] not in coordinates:
             coordinates.append([santa_x, santa_y])
 
-        
-
     elif turn == 1:
         if item == ">":
             robo_x += 1
