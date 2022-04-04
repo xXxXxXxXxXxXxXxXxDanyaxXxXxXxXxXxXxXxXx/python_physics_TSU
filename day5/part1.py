@@ -18,5 +18,6 @@ i = 0
 for line in st:
     if is_good(line):
         i += 1
-print(i)
 
+with open("output1.txt", "w") as f:
+    print(i, file = f)
