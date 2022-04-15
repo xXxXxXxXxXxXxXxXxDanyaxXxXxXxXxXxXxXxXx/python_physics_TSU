@@ -1,15 +1,15 @@
 def look_and_say(n):
     i = 0
-    resultList = []
+    res = []
     while i < len(n):
         count = 1
-        while i + 1 < len(n) and n[i] == n[i + 1]:
+        while i+1 < len(n) and n[i] == n[i+1]:
             count += 1
             i += 1
-        resultList.append(str(count) + n[i])
+        res.append(str(count) + n[i])
         i += 1
 
-    return (''.join(resultList))
+    return (''.join(res))
 
 
 with open('input.txt', 'r') as f:
