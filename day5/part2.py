@@ -10,6 +10,7 @@ def is_good(st):
 
     return False
 
+
 i = 0
 for line in st:
     if is_good(line):
