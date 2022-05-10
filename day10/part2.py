@@ -1,6 +1,6 @@
 def look_and_say(n):
     i = 0
-    resu = []
+    res = []
     while i < len(n):
         count = 1
         while i+1 < len(n) and n[i] == n[i+1]:
