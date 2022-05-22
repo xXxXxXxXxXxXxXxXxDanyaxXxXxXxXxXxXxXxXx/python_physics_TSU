@@ -1,35 +1,22 @@
-from re import sub
-
-
-def statement(velocity, moving_time, stop_time):
-    time = 2503
-    distance = 0
-    counter = 0
-    state = 0
-    while counter < time:
-        if state == 0:
-            if counter + moving_time < time:
-                distance += velocity * moving_time
-            else:
-                distance += velocity * (time - counter)
-            counter += moving_time
-            state = 1
-        elif state == 1:
-            counter += stop_time
-            state = 0
-    return distance
-
-
-array = []
 with open('input.txt', 'r') as f:
-    for line in f:
-        line = sub(r'can fly | km/s for| (seconds, but then must rest for)| seconds.', '', line)
-        array.append(line.split())
+    items = f.read()
+    
+totalsec = 2503
+best = 0
 
-res = []
-for element in array:
-    obj = statement(int(element[1]), int(element[2]), int(element[3]))
-    res.append(obj)
+for item in items.split('\n'):
+    n, _, _, speed, _, _, ftime,  _, _, _, _, _, _, rtime, _ = item.split(" ")
+    speed, ftime, rtime = int(speed), int(ftime), int(rtime)
+    dist = 0
+
+    cycle = ftime + rtime
+    bursts = totalsec // cycle
+    dist += speed * ftime * bursts
+
+    leftover = totalsec % cycle
+    dist += speed * min(leftover, ftime)
+
+    if dist > best: best = dist
 
 with open('output1.txt', 'w') as f:
-    print(str(max(res)), file=f)
+    print(best, file=f)
