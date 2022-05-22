@@ -1,25 +1,23 @@
 import json
 
-with open("input.txt", "r") as f:
-    item = f.read()
+with open('input.txt') as f:
+    item = json.load(f)
 
+def sum_of_item(item, skip_red=False):
 
-def func(obj):
+    if isinstance(item, list):
+        return sum([sum_of_item(i, skip_red) for i in item])
 
-    if isinstance(obj, dict):
-        if 'red' in obj.values():
+    if isinstance(item, dict):
+        if skip_red and 'red' in item.values():
             return 0
-        else:
-            return func(obj.values())
+        return sum([sum_of_item(i, skip_red) for i in item.values()])
 
-    if isinstance(obj, list):
-        return sum(func(x) for x in obj)
+    if isinstance(item, str):
+        return 0
 
-    if isinstance(obj, int):
-        return obj
-
-    return 0
-
+    if isinstance(item, int):
+        return item
 
 with open('output2.txt', 'w') as f:
-    print(func(json.loads(item)), file=f)
+    print(sum_of_item(item, skip_red=True), file=f)
