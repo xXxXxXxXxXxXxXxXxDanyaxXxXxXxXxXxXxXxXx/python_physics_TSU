@@ -43,5 +43,5 @@ item = next_password(item)
 while not is_valid(item):
     item = next_password(item)
 
-with open('output2', 'w') as f:
+with open('output2.txt', 'w') as f:
     print(item, file=f)

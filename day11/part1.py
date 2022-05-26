@@ -38,5 +38,5 @@ with open('input.txt', 'r') as f:
 while not is_valid(item):
     item = next_password(item)
 
-with open('output1', 'w') as f:
+with open('output1.txt', 'w') as f:
     print(item, file=f)
