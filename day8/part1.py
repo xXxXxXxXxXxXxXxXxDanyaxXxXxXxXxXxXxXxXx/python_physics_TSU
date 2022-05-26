@@ -1,18 +1,25 @@
-import re
-a = "P"
-with open("input.txt") as item:
-    N, K = 0, 0
-    res = []
-    for line in item:
-        trim_line = line[:-1]
-        no_line = trim_line.replace("\\\\", a)
-        no_quotes = no_line.replace("\\\"", a)
-        no_hexcode_line = re.sub("\\\\x..", a, no_quotes)
+with open("input.txt") as f:
+    item = f.read().split('\n')
 
-        N += len(trim_line)
-        K += (len(no_hexcode_line) - 2)
-        res.append(trim_line)
+def count_char(s):
+    s = s[1:-1]
+    count = 0
+    i = 0
+    while i < len(s):
+        count += 1
+        if s[i] == '\\':
+            if s[i+1] == 'x':
+                i += 4
+            else:
+                i += 2
+        else:
+            i += 1
+    return count
+
+total =  0
+
+for line in item:
+    total += len(line) - count_char(line)
 
 with open('output1.txt', 'w') as f:
-    print(str(N - K), file=f)
-
+    print(total, file=f)
