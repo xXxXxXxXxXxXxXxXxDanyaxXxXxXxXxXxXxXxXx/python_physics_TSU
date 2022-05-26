@@ -12,4 +12,4 @@ with open("input.txt") as item:
 
 
 with open('output2.txt', 'w') as f:
-    print(str(K - N), file=f)
+    print(str(K - N - 1), file=f)
