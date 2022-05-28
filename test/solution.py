@@ -22,10 +22,8 @@ with open('input.txt', 'r') as f:
 
 answers = []
 
-for i in range(len(items)):
+for item in items:
     #  здесь будут конечные массивы с числами, которые соответствуют возможным комбинациям A, B, C
-
-    item = items[i]
     A_list = []
     B_list = []
     C_list = []
@@ -42,7 +40,7 @@ for i in range(len(items)):
     #  значит мы будем итерироваться по ('0', '0'), ('0', '1') и так до ('9', '9')
     for x in product(numbers, repeat=A.count('?')):
         a = A
-        for i in x: 
+        for i in x:
             a = a.replace('?', i, 1)
         A_list.append(a)
 
@@ -67,7 +65,7 @@ for i in range(len(items)):
     ans = []
     for a in A_list:
         for b in B_list:
-            max_len = max(len(a), len(b), len(c))  # берем максимальную длину одного из чисел, дабы нули не потерять
+            max_len = max(len(a), len(b))  # берем максимальную длину одного из чисел, дабы нули не потерять
             if (summ := str(int(a) + int(b))) in C_list:  # использузем моржа, чтобы не считать сумму снова и чтобы запихнуть в ответ
                 a = '0' * (max_len-len(a)) + a # приписываем столько нулей, сколько нам не хватает в числе
                 b = '0' * (max_len-len(b)) + b
