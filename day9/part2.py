@@ -28,5 +28,5 @@ with open("input.txt") as f1:
 
         path_lengths[path] = sum(lengths)
 
-with open('output2.txt', 'w') as f2:
-    print(str(max(path_lengths.values())), file=f2)
+with open('output1.txt', 'w') as f2:
+    print(str(min(path_lengths.values())), file=f2)
